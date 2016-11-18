@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div 这里是个div
+  button(class='btn-success' style='margin-top:20px') btn-success 
+
+  div
+  each value,index in names
+   p= index + '.'+ value
