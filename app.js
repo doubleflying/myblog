@@ -2,14 +2,25 @@ var express = require('express'),
   routes = require('./routes'),
   http = require('http'),
   path = require('path'),
-  mongoskin = require('mongoskin'),
-  dbUrl = process.env.MONGOHQ_URL || 'mongodb://@localhost:27017/blog',
-  db = mongoskin.db(dbUrl, {safe: true}),
-  collections = {
-    articles: db.collection('articles'),
-    users: db.collection('users')
-  };
+  mongoose = require('mongoose');
+  // mongoskin = require('mongoskin'),
+  // dbUrl = process.env.MONGOHQ_URL || 'mongodb://@localhost:27017/blog',
+  // db = mongoskin.db(dbUrl, {safe: true}),
+  // collections = {
+  //   articles: db.collection('articles'),
+  //   users: db.collection('users')
+  // };
 
+var db = mongoose.createConnection('localhost', 'myblog');
+db.on('error', function callback() { 
+  console.log("Connect error");
+})
+db.once('open', function callback() { 
+  console.log("mongodb is working...");
+})
+
+
+const UPLOAD_FOLDER = './public/upload';
 var favicon = require('serve-favicon');
 
 var session = require('express-session'),
