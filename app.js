@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 app.use(cookieParser('123456'));
-app.use(session({ secret: '666666' }));
+app.use(session({ secret: 'express is powerful' }));
 
 app.use(methodOverride());
 app.use(require('stylus').middleware(__dirname + '/public'));
@@ -52,8 +52,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function (req, res, next) {
   if (req.session && req.session.admin) {
     res.locals.admin = true;
-    next();
   }
+  next();
 });
 
 //权限管理
@@ -76,8 +76,11 @@ app.get('/', routes.index);
 app.get('/login', routes.user.login);
 app.post('/login', routes.user.authenticate);
 app.get('/logout', routes.user.logout);
-app.get('/admin',  routes.article.admin);
-app.get('/post',  routes.article.post);
+app.get('/admin',  authorize);
+app.get('/admin', routes.article.admin);
+app.get('/post',  authorize);
+app.get('/post', routes.article.post);
+app.post('/post',  authorize);
 app.post('/post', routes.article.postArticle);
 app.get('/articles/:slug', routes.article.show);
 
