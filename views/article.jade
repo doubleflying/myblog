@@ -1,6 +1,6 @@
 extends layout
-
+//- 如果用= 则会把text内容直接作为纯文本输出，用!=会把text内容按内容本身的格式输出
 block content
-  p
+  div
     h1= title
-    p= text
+    div!= text 

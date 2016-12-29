@@ -1,7 +1,7 @@
 $(function () { 
-    var editor = editormd("editormd", {
-            path: "../lib/" // Autoload modules mode, codemirror, marked... dependents libs path
-        });
+    // var editor = editormd("editormd", {
+    //         path: "../lib/" // Autoload modules mode, codemirror, marked... dependents libs path
+    //     });
 
     CKEDITOR.replace('text', {
         toolbarGroups: [
@@ -17,8 +17,8 @@ $(function () {
 		    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
 		    { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
 		    { name: 'styles' },
-		    { name: 'colors' },
-            { name: 'about' },
+		    { name: 'colors' }
+            //{ name: 'about' },
             //{ name: 'links'} 有bug
         ],
         extraPlugins: 'markdown'
