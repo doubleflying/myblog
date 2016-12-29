@@ -1,0 +1,17 @@
+extends layout
+block page
+  - var menu = 'upload'
+block content
+    h2 多图上传
+    div= error
+    div.col-md-8
+      form(action="/upload", method="POST", role="form")
+        div.form-group
+            label(for="title") 请选择文件
+            input#file1.form-control(name="file1", type="file")
+            input#file2.form-control(name="file2", type="file")
+            input#file3.form-control(name="file3", type="file")
+            input#file4.form-control(name="file4", type="file")
+            input#file5.form-control(name="file5", type="file")
+        p
+          button.btn.btn-primary(type="submit") 提交

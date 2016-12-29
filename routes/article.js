@@ -109,3 +109,13 @@ exports.admin = function(req, res, next) {
   });
 
 }
+
+/**GET upload page */
+exports.upload = function (req, res, next) { 
+  res.render('upload');
+}
+
+/**upload file for blog */
+exports.uploadFile = function (req, res, next) { 
+  
+}
